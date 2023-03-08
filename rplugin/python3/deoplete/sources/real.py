@@ -40,11 +40,11 @@ class Source(Base):
 
             # The dictionary not found.
             else:
-                raise ValueError("Please, Check the path of phantom.")
+                raise ValueError("Please, Check the path of real.")
 
         # TraceBack
         except Exception:
-            with open("phantom_error.log", 'a') as log_py:
+            with open("real_error.log", 'a') as log_py:
                 traceback.print_exc(file=log_py)
                 raise RuntimeError from None
 
