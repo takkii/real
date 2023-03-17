@@ -14,7 +14,7 @@ class Source(Base):
         super().__init__(vim)
         self.name = 'Real'
         self.filetypes = ['ruby']
-        mark_synbol = '[Real]'
+        mark_synbol = '[real-time]'
         self.mark = str(mark_synbol)
         ruby_match = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         slash_no_match = [r'[;/[^¥/]\*/]']
