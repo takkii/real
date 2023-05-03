@@ -31,12 +31,12 @@ class Source(Base):
             # Set the dictionary.
             with open(os.path.expanduser("~/config/load.yml")) as yml:
                 config = yaml.safe_load(yml)
-                yml_load = os.path.expanduser(config['Folder_Load_Path'])
+                yml_load = os.path.expanduser(config['Folder_Load'])
 
             # Get the dictionary.
             if os.path.isdir(yml_load):
                 ruby_method = open(os.path.expanduser(
-                    config['File_Load_Path']))
+                    config['File_Load']))
 
             # The dictionary not found.
             else:
