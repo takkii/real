@@ -14,11 +14,11 @@ class InstallerRunner
   def self.run
     encoding_style
     if Dir.exist?(File.expand_path('~/real_log'))
-      puts '既に、real_logフォルダがあります...何もしません。'
+      puts 'Already have a real_log folder...do nothing.'
     else
       FileUtils.mkdir('real_log')
       FileUtils.mv("#{File.dirname(__FILE__)}/real_log", File.expand_path('~/'))
-      puts 'real_logフォルダを作成しました。'
+      puts 'Created a real_log folder.'
     end
   end
 end
