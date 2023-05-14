@@ -1,10 +1,11 @@
 import gc
 import os
 import re
-import yaml
 import traceback
-from operator import itemgetter
+import yaml
 from deoplete.source.base import Base
+from operator import itemgetter
+from typing import Optional
 
 
 # Use Config project
@@ -12,9 +13,9 @@ class Source(Base):
 
     def __init__(self, vim):
         super().__init__(vim)
-        self.name = 'Real'
+        self.name: Optional[str] = 'real'
         self.filetypes = ['ruby']
-        mark_synbol = '[real-time]'
+        mark_synbol: Optional[str] = '[real-time]'
         self.mark = str(mark_synbol)
         ruby_match = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         slash_no_match = [r'[;/[^¥/]\*/]']
@@ -22,50 +23,62 @@ class Source(Base):
         self.rank = 500
 
     def get_complete_position(self, context):
-        ruby_complete = '[a-zA-Z0-9_?!]*$'
+        ruby_complete: Optional[str] = '[a-zA-Z0-9_?!]*$'
         m = re.search(ruby_complete, context['input'])
         return m.start() if m else -1
 
     def gather_candidates(self, context):
         try:
+            # Settings config/folder/file Loading PATH.
+            config_load: Optional[str] = '~/config/load.yml'
+            folder_load: Optional[str] = 'Folder_Load'
+            file_load: Optional[str] = 'File_Load'
+
             # Set the dictionary.
-            with open(os.path.expanduser("~/config/load.yml")) as yml:
+            with open(os.path.expanduser(config_load)) as yml:
                 config = yaml.safe_load(yml)
-                yml_load = os.path.expanduser(config['Folder_Load'])
+                yml_load = os.path.expanduser(config[folder_load])
 
-            # Get the dictionary.
+            # Get Receiver/Ruby Method Complete.
             if os.path.isdir(yml_load):
-                ruby_method = open(os.path.expanduser(
-                    config['File_Load']))
+                with open(os.path.expanduser(config[file_load])) as r_method:
+                    data = list(r_method.readlines())
+                    data_ruby: Optional[list] = [s.rstrip() for s in data]
+                    complete: Optional[list] = data_ruby
+                    complete.sort(key=itemgetter(0))
+                    return complete
 
-            # The dictionary not found.
+            # Config Folder not found.
             else:
-                raise ValueError("Please, Check the path of real.")
+                raise ValueError("None, Please Check the Config Folder.")
 
-        # TraceBack
+        # TraceBack.
         except Exception:
-            with open("real_error.log", 'a') as log_py:
-                traceback.print_exc(file=log_py)
-                raise RuntimeError from None
+            # Load/Create LogFile.
+            config_load: Optional[str] = '~/config/load.yml'
+            folder_load: Optional[str] = 'Pub_Except_Folder_load'
+            file_load: Optional[str] = 'Pub_Except_File_load'
+            real: Optional[str] = os.path.expanduser(config[folder_load])
+            debug_word: Optional[str] = os.path.expanduser(config[file_load])
 
-        # Custom Exception
+            # Load the dictionary.
+            if os.path.isdir(real):
+                with open(debug_word, 'a') as log_py:
+                    traceback.print_exc(file=log_py)
+
+                    # throw except.
+                    raise RuntimeError from None
+
+            # real Foler not found.
+            else:
+                raise ValueError("None, Please Check the real Folder.")
+
+        # Custom Exception.
         except ValueError as ext:
             print(ext)
             raise RuntimeError from None
 
-        # ruby dictionary list complete
-        else:
-            # read
-            data = list(ruby_method.readlines())
-            data_ruby = [s.rstrip() for s in data]
-            ruby_method.close()
-
-            # sort and itemgetter
-            complete = data_ruby
-            complete.sort(key=itemgetter(0))
-
-            # result
-            return complete
-
-            # GC exec
+        # Once Exec.
+        finally:
+            # GC collection.
             gc.collect()
