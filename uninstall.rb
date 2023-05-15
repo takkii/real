@@ -18,4 +18,12 @@ class UnInstallerRunner
   end
 end
 
-UnInstallerRunner.run
+begin
+  UnInstallerRunner.run
+rescue StandardError => e
+  puts e.backtrace
+ensure
+  GC.compact
+end
+
+__END__
