@@ -26,4 +26,12 @@ class InstallerRunner
   end
 end
 
-InstallerRunner.run
+begin
+  InstallerRunner.run
+rescue StandardError => e
+  puts e.backtrace
+ensure
+  GC.compact
+end
+
+__END__
