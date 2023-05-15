@@ -56,8 +56,8 @@ class Source(Base):
         except Exception:
             # Load/Create LogFile.
             config_load: Optional[str] = '~/config/load.yml'
-            folder_load: Optional[str] = 'Pub_Except_Folder_load'
-            file_load: Optional[str] = 'Pub_Except_File_load'
+            folder_load: Optional[str] = 'Except_Folder_load'
+            file_load: Optional[str] = 'Except_File_load'
             real: Optional[str] = os.path.expanduser(config[folder_load])
             debug_word: Optional[str] = os.path.expanduser(config[file_load])
 
