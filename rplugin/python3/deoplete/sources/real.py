@@ -55,11 +55,10 @@ class Source(Base):
         # TraceBack.
         except Exception:
             # Load/Create LogFile.
-            config_load: Optional[str] = '~/config/load.yml'
-            folder_load: Optional[str] = 'Except_Folder_load'
-            file_load: Optional[str] = 'Except_File_load'
-            real: Optional[str] = os.path.expanduser(config[folder_load])
-            debug_word: Optional[str] = os.path.expanduser(config[file_load])
+            except_folder: Optional[str] = 'Except_Folder_load'
+            except_file: Optional[str] = 'Except_File_load'
+            real: Optional[str] = os.path.expanduser(config[except_folder])
+            debug_word: Optional[str] = os.path.expanduser(config[except_file])
 
             # Load the dictionary.
             if os.path.isdir(real):
