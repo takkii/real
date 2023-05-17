@@ -29,15 +29,25 @@ class Source(Base):
 
     def gather_candidates(self, context):
         try:
-            # Settings config/folder/file Loading PATH.
+            # Use vim-plug, This Config load path is Neovim ENV.
+            config_path: Optional[str] = '~/.neovim/plugged/config/load.yml'
+
+            # Standard config/folder/file Loading PATH.
             config_load: Optional[str] = '~/config/load.yml'
             folder_load: Optional[str] = 'Folder_Load'
             file_load: Optional[str] = 'File_Load'
 
             # Set the dictionary.
-            with open(os.path.expanduser(config_load)) as yml:
-                config = yaml.safe_load(yml)
-                yml_load = os.path.expanduser(config[folder_load])
+            if os.path.isdir(config_path):
+                with open(os.path.expanduser(config_path)) as yml:
+                    config = yaml.safe_load(yml)
+                    yml_load = os.path.expanduser(config[folder_load])
+            elif os.path.isdir(config_load):
+                with open(os.path.expanduser(config_load)) as yml:
+                    config = yaml.safe_load(yml)
+                    yml_load = os.path.expanduser(config[folder_load])
+            else:
+                raise ValueError("None, Please Check the Config Folder.")
 
             # Get Receiver/Ruby Method Complete.
             if os.path.isdir(yml_load):
