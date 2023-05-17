@@ -42,10 +42,12 @@ class Source(Base):
                 with open(os.path.expanduser(config_path)) as yml:
                     config = yaml.safe_load(yml)
                     yml_load = os.path.expanduser(config[folder_load])
+
             elif os.path.isdir(config_load):
                 with open(os.path.expanduser(config_load)) as yml:
                     config = yaml.safe_load(yml)
                     yml_load = os.path.expanduser(config[folder_load])
+
             else:
                 raise ValueError("None, Please Check the Config Folder.")
 
