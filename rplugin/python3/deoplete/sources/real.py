@@ -29,18 +29,20 @@ class Source(Base):
 
     def gather_candidates(self, context):
         try:
-            # Use vim-plug, This Config load path is Neovim ENV.
-            load_file: Optional[str] = '~/.neovim/plugged/config/load.yml'
-            folder_load: Optional[str] = 'Folder_Load'
-            file_load: Optional[str] = 'File_Load'
+            # Settings, Config path is true/false change.
+            config_load: Optional[str] = '~/config/load.yml'
+            plug_config: Optional[str] = '~/.neovim/plugged/config/load.yml'
 
-            # Set the dictionary.
-            with open(os.path.expanduser(load_file)) as yml:
-                config = yaml.safe_load(yml)
-                yml_load = os.path.expanduser(config[folder_load])
+            # Settings, Loading File PATH.
+            file_load: Optional[str] = 'Home_File'
+            plug_load: Optional[str] = 'File_Load'
 
-            # Get Receiver/Ruby Method Complete.
-            if os.path.isdir(yml_load):
+            # Home Folder, Set the dictionary.
+            if os.path.isfile(os.path.expanduser(config_load)):
+                with open(os.path.expanduser(config_load)) as yml:
+                    config = yaml.safe_load(yml)
+
+                # Get Receiver/Ruby Method Complete.
                 with open(os.path.expanduser(config[file_load])) as r_method:
                     data = list(r_method.readlines())
                     data_ruby: Optional[list] = [s.rstrip() for s in data]
@@ -48,9 +50,22 @@ class Source(Base):
                     complete.sort(key=itemgetter(0))
                     return complete
 
+            # Use vim-plug, Set the dictionary.
+            elif os.path.isfile(os.path.expanduser(plug_config)):
+                with open(os.path.expanduser(plug_config)) as yml:
+                    config = yaml.safe_load(yml)
+
+                # Get Receiver/Ruby Method Complete.
+                with open(os.path.expanduser(config[plug_load])) as r_method:
+                    data = list(r_method.readlines())
+                    plug_ruby: Optional[list] = [s.rstrip() for s in data]
+                    r_complete: Optional[list] = plug_ruby
+                    r_complete.sort(key=itemgetter(0))
+                    return r_complete
+
             # Config Folder not found.
             else:
-                raise ValueError("None, Please Check the Config Folder.")
+                raise ValueError("None, Please Check the Config Folder")
 
         # TraceBack.
         except Exception:
