@@ -1,11 +1,11 @@
 <div align="center">
-  <h2><p>Real</p></h2>
+  <h2><p>Real is <a href="https://github.com/Shougo/deoplete.nvim">deoplete.nvim</a> plugins.</p></h2>
 </div>
 
 <br />
 
 <div align="center">
-  <h4><p>Minimal ruby dictionary list.</p></h4>
+  <h4><p>The Input Completion List Uses a Dictionary.</p></h4>
 </div>
 
 <br />
@@ -21,7 +21,7 @@
 </div>
 
 <div align="center">
-   <p>Please read me <a href="https://github.com/takkii/real/wiki/manual">here</a>!</p>
+   <p>Please read me <a href="https://github.com/takkii/real/wiki/manual">here</a> !</p>
 </div>
 
 <br />
