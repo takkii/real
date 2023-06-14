@@ -38,7 +38,7 @@ class Source(Base):
             plug_load: Optional[str] = 'File_Load'
 
             # Home Folder, Set the dictionary.
-            if os.path.isfile(os.path.expanduser(config_load)):
+            if os.path.exists(os.path.expanduser(config_load)):
                 with open(os.path.expanduser(config_load)) as yml:
                     config = yaml.safe_load(yml)
 
@@ -51,7 +51,7 @@ class Source(Base):
                     return complete
 
             # Use vim-plug, Set the dictionary.
-            elif os.path.isfile(os.path.expanduser(plug_config)):
+            elif os.path.exists(os.path.expanduser(plug_config)):
                 with open(os.path.expanduser(plug_config)) as yml:
                     config = yaml.safe_load(yml)
 
