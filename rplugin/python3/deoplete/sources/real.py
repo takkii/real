@@ -33,7 +33,7 @@ class Source(Base):
             py_major = sys.version_info[0]
             py_minor = sys.version_info[1]
 
-            if py_major == 3 and py_minor > 5:
+            if py_major == 3 and py_minor > 4:
                 # Settings, Config path is true/false change.
                 config_load: Optional[str] = '~/config/load.yml'
                 plug_config: Optional[
@@ -73,7 +73,7 @@ class Source(Base):
                 else:
                     raise ValueError("None, Please Check the Config Folder")
             else:
-                raise ValueError("Python Version Check, >= 3.5")
+                raise ValueError("Python Version Check, 3.5 or higher.")
 
         # TraceBack.
         except Exception:
