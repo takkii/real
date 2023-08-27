@@ -1,6 +1,7 @@
 import gc
 import os
 import re
+import sys
 import traceback
 import yaml
 from deoplete.source.base import Base
@@ -29,43 +30,50 @@ class Source(Base):
 
     def gather_candidates(self, context):
         try:
-            # Settings, Config path is true/false change.
-            config_load: Optional[str] = '~/config/load.yml'
-            plug_config: Optional[str] = '~/.neovim/plugged/config/load.yml'
+            py_major = sys.version_info[0]
+            py_minor = sys.version_info[1]
 
-            # Settings, Loading File PATH.
-            file_load: Optional[str] = 'Home_File'
-            plug_load: Optional[str] = 'File_Load'
+            if py_major == 3 and py_minor > 5:
+                # Settings, Config path is true/false change.
+                config_load: Optional[str] = '~/config/load.yml'
+                plug_config: Optional[
+                    str] = '~/.neovim/plugged/config/load.yml'
 
-            # Home Folder, Set the dictionary.
-            if os.path.exists(os.path.expanduser(config_load)):
-                with open(os.path.expanduser(config_load)) as yml:
-                    config = yaml.safe_load(yml)
+                # Settings, Loading File PATH.
+                file_load: Optional[str] = 'Home_File'
+                plug_load: Optional[str] = 'File_Load'
 
-                # Get Receiver/Ruby Method Complete.
-                with open(os.path.expanduser(config[file_load])) as r_method:
-                    data = list(r_method.readlines())
-                    data_ruby: Optional[list] = [s.rstrip() for s in data]
-                    complete: Optional[list] = data_ruby
-                    complete.sort(key=itemgetter(0))
-                    return complete
+                # Home Folder, Set the dictionary.
+                if os.path.exists(os.path.expanduser(config_load)):
+                    with open(os.path.expanduser(config_load)) as yml:
+                        config = yaml.safe_load(yml)
 
-            # Use vim-plug, Set the dictionary.
-            elif os.path.exists(os.path.expanduser(plug_config)):
-                with open(os.path.expanduser(plug_config)) as yml:
-                    config = yaml.safe_load(yml)
+                    # Get Receiver/Ruby Method Complete.
+                    with open(os.path.expanduser(config[file_load])) as r_meth:
+                        data = list(r_meth.readlines())
+                        data_ruby: Optional[list] = [s.rstrip() for s in data]
+                        complete: Optional[list] = data_ruby
+                        complete.sort(key=itemgetter(0))
+                        return complete
 
-                # Get Receiver/Ruby Method Complete.
-                with open(os.path.expanduser(config[plug_load])) as r_method:
-                    data = list(r_method.readlines())
-                    plug_ruby: Optional[list] = [s.rstrip() for s in data]
-                    r_complete: Optional[list] = plug_ruby
-                    r_complete.sort(key=itemgetter(0))
-                    return r_complete
+                # Use vim-plug, Set the dictionary.
+                elif os.path.exists(os.path.expanduser(plug_config)):
+                    with open(os.path.expanduser(plug_config)) as yml:
+                        config = yaml.safe_load(yml)
 
-            # Config Folder not found.
+                    # Get Receiver/Ruby Method Complete.
+                    with open(os.path.expanduser(config[plug_load])) as r_meth:
+                        data = list(r_meth.readlines())
+                        plug_ruby: Optional[list] = [s.rstrip() for s in data]
+                        r_complete: Optional[list] = plug_ruby
+                        r_complete.sort(key=itemgetter(0))
+                        return r_complete
+
+                # Config Folder not found.
+                else:
+                    raise ValueError("None, Please Check the Config Folder")
             else:
-                raise ValueError("None, Please Check the Config Folder")
+                raise ValueError("Python Version Check, >= 3.5")
 
         # TraceBack.
         except Exception:
