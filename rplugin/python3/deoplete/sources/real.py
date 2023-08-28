@@ -30,9 +30,11 @@ class Source(Base):
 
     def gather_candidates(self, context):
         try:
+            # It doesn't support python4 yet.
             py_major = sys.version_info[0]
             py_minor = sys.version_info[1]
 
+            # 3.5 or higher python version is required.
             if py_major == 3 and py_minor > 4:
                 # Settings, Config path is true/false change.
                 config_load: Optional[str] = '~/config/load.yml'
