@@ -4,9 +4,13 @@ import re
 import sys
 import traceback
 import yaml
+import warnings
+
 from deoplete.source.base import Base
 from operator import itemgetter
 from typing import Optional
+
+warnings.filterwarnings('ignore')
 
 
 # Use Config project
