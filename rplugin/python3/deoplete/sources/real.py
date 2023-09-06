@@ -56,7 +56,7 @@ class Source(Base):
 
                     # Get Receiver/Ruby Method Complete.
                     with open(os.path.expanduser(config[file_load])) as r_meth:
-                        data = list(r_meth.readlines())
+                        data: Optional[list] = list(r_meth.readlines())
                         data_ruby: Optional[list] = [s.rstrip() for s in data]
                         complete: Optional[list] = data_ruby
                         complete.sort(key=itemgetter(0))
