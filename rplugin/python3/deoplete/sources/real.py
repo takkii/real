@@ -69,9 +69,9 @@ class Source(Base):
 
                     # Get Receiver/Ruby Method Complete.
                     with open(os.path.expanduser(config[plug_load])) as r_meth:
-                        data = list(r_meth.readlines())
-                        plug_ruby: Optional[list] = [s.rstrip() for s in data]
-                        r_complete: Optional[list] = plug_ruby
+                        data_py: Optional[list] = list(r_meth.readlines())
+                        plug_rb: Optional[list] = [s.rstrip() for s in data_py]
+                        r_complete: Optional[list] = plug_rb
                         r_complete.sort(key=itemgetter(0))
                         return r_complete
 
