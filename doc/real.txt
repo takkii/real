@@ -1,0 +1,26 @@
+*real*
+
+version: 2023/09/30
+Author: takkii <karuma.reason@gmail.com>
+License: MIT
+
+==============================================================================
+*Environment*
+
+Environment construction                Python3, vim-plug, deoplete.nvim
+Introduction (vim-plug)                 Plug 'takkii/real'
+Settings (deoplete.nvim)                :UpdateRemotePlugins
+Dependency removal                      pip3 install -r requirements.txt
+Python3.5 ≦  x ＜ Python4.0             Python3.5 or higher
+x = real                                but less than 4.0 is recommended
+
+==============================================================================
+*./real*
+
+Load dictionary                         Plug 'takkii/config' or $HOME/config
+Same behavior as real                   $HOME/config
+Create log folder                       ruby log_folder.rb
+Automatic environment construction      ruby install.rb
+Delete Config folder and Requirements   ruby uninstall.rb
+
+==============================================================================
