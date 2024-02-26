@@ -6,7 +6,7 @@ class RubyMethod
   end
 
   def write_to_file
-    File.open('methods.txt', 'a:utf-8', perm = 0o777) do |f|
+    File.open('method.txt', 'a:utf-8', perm = 0o777) do |f|
       f.puts @methods.sort.uniq
     end
   end
