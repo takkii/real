@@ -44,6 +44,9 @@ class Source(Base):
                 plg_f: Optional[str] = '~/.neovim/plugged/real/dict/'
                 plg_m: Optional[str] = '~/.neovim/plugged/real/dict/method.txt'
 
+                loc_f: Optional[str] = '~/dict/'
+                loc_m: Optional[str] = '~/dict/method.txt'
+
                 # Use vim-plug, Set the dictionary.
                 if os.path.exists(os.path.expanduser(plg_f)):
 
@@ -54,6 +57,17 @@ class Source(Base):
                         r_complete: Optional[list] = plug_rb
                         r_complete.sort(key=itemgetter(0))
                         return r_complete
+
+                # Use vim-plug, Set the dictionary.
+                elif os.path.exists(os.path.expanduser(loc_f)):
+
+                    # Get Receiver/Ruby Method Complete.
+                    with open(os.path.expanduser(loc_m)) as rb_mt:
+                        dt_py: Optional[list] = list(rb_mt.readlines())
+                        plg_r: Optional[list] = [s.rstrip() for s in dt_py]
+                        r_com: Optional[list] = plg_r
+                        r_com.sort(key=itemgetter(0))
+                        return r_com
 
                 # Config Folder not found.
                 else:
