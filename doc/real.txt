@@ -17,8 +17,8 @@ x = real                                but less than 4.0 is recommended
 ==============================================================================
 *./real*
 
-Load dictionary                         Plug 'takkii/config' or $HOME/config
-Same behavior as real                   $HOME/config
+create a word list                      cd ./.neovim/plugged/real/dict/
+                                        ruby ./ruby_method.rb
 Create log folder                       ruby ./tools/log_folder.rb
 Automatic environment construction      ruby ./tools/install.rb
 Delete Config folder and Requirements   ruby ./tools/uninstall.rb

@@ -17,8 +17,8 @@ x = real
 ==============================================================================
 *./real*
 
-辞書読み込み                          Plug 'takkii/config' or $HOME/config
-realと同じ動作                        $HOME/configを読み込み時
+単語リストを作成します                cd ./.neovim/plugged/real/dict/
+                                      ruby ./ruby_method.rb
 ログフォルダ作成                      ruby ./tools/log_folder.rb
 環境構築自動                          ruby ./tools/install.rb
 configフォルダ/requirements削除       ruby ./tools/uninstall.rb
