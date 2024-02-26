@@ -1,6 +1,0 @@
-msgpack-python
-msgpack
-pynvim
-pyyaml
-types-PyYAML
-debugpy
