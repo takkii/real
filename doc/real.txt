@@ -20,7 +20,5 @@ x = real                                but less than 4.0 is recommended
 create a word list                      cd ./.neovim/plugged/real/dict/
                                         ruby ./ruby_method.rb
 Create log folder                       ruby ./tools/log_folder.rb
-Automatic environment construction      ruby ./tools/install.rb
-Delete Config folder and Requirements   ruby ./tools/uninstall.rb
 
 ==============================================================================
