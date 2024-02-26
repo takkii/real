@@ -1,6 +1,6 @@
 *real*
 
-version: 2023/09/30
+version: 2024/02/26
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -12,15 +12,15 @@ License: MIT
 設定(deoplete.nvim)                   :UpdateRemotePlugins
 依存解消                              pip3 install -r requirements.txt
 Python3.5 ≦  x ＜ Python4.0           Python3.5以上4.0未満を推奨します
-x = real                              
+x = real
 
 ==============================================================================
 *./real*
 
 辞書読み込み                          Plug 'takkii/config' or $HOME/config
 realと同じ動作                        $HOME/configを読み込み時
-ログフォルダ作成                      ruby log_folder.rb
-環境構築自動                          ruby install.rb
-configフォルダ/requirements削除       ruby uninstall.rb
+ログフォルダ作成                      ruby ./tools/log_folder.rb
+環境構築自動                          ruby ./tools/install.rb
+configフォルダ/requirements削除       ruby ./tools/uninstall.rb
 
 ==============================================================================
