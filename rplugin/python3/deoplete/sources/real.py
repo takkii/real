@@ -20,7 +20,7 @@ class Source(Base):
         super().__init__(vim)
         self.name: Optional[str] = 'real'
         self.filetypes = ['ruby']
-        mark_synbol: Optional[str] = '[ruby-complete]'
+        mark_synbol: Optional[str] = '[ruby_method]'
         self.mark = str(mark_synbol)
         ruby_match = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         slash_no_match = [r'[;/[^¥/]\*/]']
@@ -35,11 +35,11 @@ class Source(Base):
     def gather_candidates(self, context):
         try:
             # It doesn't support python4 yet.
-            py_major = sys.version_info[0]
-            py_minor = sys.version_info[1]
+            py_mj = sys.version_info[0]
+            py_mi = sys.version_info[1]
 
-            # 3.5 or higher python version is required.
-            if py_major == 3 and py_minor > 4:
+            # 3.5 and higher, 4.x or less,python version is required.
+            if (py_mj == 3 and py_mi > 4) or (py_mj < 4):
                 # Settings, Config path is true/false change.
                 config_load: Optional[str] = '~/config/load.yml'
                 plug_config: Optional[
@@ -78,8 +78,10 @@ class Source(Base):
                 # Config Folder not found.
                 else:
                     raise ValueError("None, Please Check the Config Folder")
+
+            # Python_VERSION: 3.5 or higher and 4.x or less.
             else:
-                raise ValueError("Python Version Check, 3.5 or higher.")
+                raise ValueError("VERSION: 3.5 and higher, 4.x or less")
 
         # TraceBack.
         except Exception:
