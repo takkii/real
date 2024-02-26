@@ -1,6 +1,6 @@
 *real*
 
-version: 2023/09/30
+version: 2024/02/26
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -19,8 +19,8 @@ x = real                                but less than 4.0 is recommended
 
 Load dictionary                         Plug 'takkii/config' or $HOME/config
 Same behavior as real                   $HOME/config
-Create log folder                       ruby log_folder.rb
-Automatic environment construction      ruby install.rb
-Delete Config folder and Requirements   ruby uninstall.rb
+Create log folder                       ruby ./tools/log_folder.rb
+Automatic environment construction      ruby ./tools/install.rb
+Delete Config folder and Requirements   ruby ./tools/uninstall.rb
 
 ==============================================================================
