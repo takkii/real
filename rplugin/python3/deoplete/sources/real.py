@@ -40,17 +40,18 @@ class Source(Base):
             # 3.5 and higher, 4.x or less,python version is required.
             if (py_mj == 3 and py_mi > 4) or (py_mj < 4):
 
-                # Settings, Config path is true/false change.
+                # Settings, vim-plug path is true/false folder search.
                 plg_f: Optional[str] = '~/.neovim/plugged/real/dict/'
                 plg_m: Optional[str] = '~/.neovim/plugged/real/dict/method.txt'
 
+                # Settings, $HOME/dict path is true/false folder search.
                 loc_f: Optional[str] = '~/dict/'
                 loc_m: Optional[str] = '~/dict/method.txt'
 
                 # Use vim-plug, Set the dictionary.
                 if os.path.exists(os.path.expanduser(plg_f)):
 
-                    # Get Receiver/Ruby Method Complete.
+                    # User side, normal function.
                     with open(os.path.expanduser(plg_m)) as r_meth:
                         data_py: Optional[list] = list(r_meth.readlines())
                         plug_rb: Optional[list] = [s.rstrip() for s in data_py]
@@ -58,16 +59,16 @@ class Source(Base):
                         r_complete.sort(key=itemgetter(0))
                         return r_complete
 
-                # Use vim-plug, Set the dictionary.
+                # $HOME/dict, Set the dictionary to develop mode.
                 elif os.path.exists(os.path.expanduser(loc_f)):
 
-                    # Get Receiver/Ruby Method Complete.
+                    # Function change destination.
                     with open(os.path.expanduser(loc_m)) as rb_mt:
-                        dt_py: Optional[list] = list(rb_mt.readlines())
-                        plg_r: Optional[list] = [s.rstrip() for s in dt_py]
-                        r_com: Optional[list] = plg_r
-                        r_com.sort(key=itemgetter(0))
-                        return r_com
+                        dev_py: Optional[list] = list(rb_mt.readlines())
+                        dev_plg: Optional[list] = [s.rstrip() for s in dev_py]
+                        dev_complete: Optional[list] = dev_plg
+                        dev_complete.sort(key=itemgetter(0))
+                        return dev_complete
 
                 # Config Folder not found.
                 else:
