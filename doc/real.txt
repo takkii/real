@@ -1,6 +1,6 @@
 *real*
 
-version: 2024/02/26
+version: 2024/02/27
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -17,7 +17,7 @@ x = real                                but less than 4.0 is recommended
 ==============================================================================
 *./real*
 
-create a word list                      cd ./.neovim/plugged/real/dict/
+create a word list                      cd ~/.neovim/plugged/real/dict/
                                         ruby ./ruby_method.rb
 Create log folder                       ruby ./tools/log_folder.rb
 Develop env (dictionary generate)       ruby ./dev/copy_install.rb
