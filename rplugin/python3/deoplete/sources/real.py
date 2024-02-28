@@ -42,48 +42,45 @@ class Source(Base):
 
                 # Settings, vim-plug | neovim path is true/false folder search.
                 neo_f: Optional[str] = '~/.neovim/plugged/real/dict/'
-                neo_m: Optional[str] = '~/.neovim/plugged/real/dict/method.txt'
+                neo_t: Optional[str] = '~/.neovim/plugged/real/dict/method.txt'
 
                 # Settings, vim-plug | vim path is true/false folder search.
                 vim_f: Optional[str] = '~/.vim/plugged/real/dict/'
-                vim_m: Optional[str] = '~/.vim/plugged/real/dict/method.txt'
+                vim_t: Optional[str] = '~/.vim/plugged/real/dict/method.txt'
 
                 # Settings, $HOME/dict path is true/false folder search.
                 loc_f: Optional[str] = '~/dict/'
-                loc_m: Optional[str] = '~/dict/method.txt'
+                loc_t: Optional[str] = '~/dict/method.txt'
 
                 # Use vim-plug | neovim, Set the dictionary.
                 if os.path.exists(os.path.expanduser(neo_f)):
 
                     # User side, normal function.
-                    with open(os.path.expanduser(neo_m)) as r_meth:
-                        data_py: Optional[list] = list(r_meth.readlines())
-                        plug_rb: Optional[list] = [s.rstrip() for s in data_py]
-                        r_complete: Optional[list] = plug_rb
-                        r_complete.sort(key=itemgetter(0))
-                        return r_complete
+                    with open(os.path.expanduser(neo_t)) as r_meth:
+                        neo_py: Optional[list] = list(r_meth.readlines())
+                        neo_comp: Optional[list] = [s.rstrip() for s in neo_py]
+                        neo_comp.sort(key=itemgetter(0))
+                        return neo_comp
 
                 # Use vim-plug | vim, Set the dictionary.
                 if os.path.exists(os.path.expanduser(vim_f)):
 
                     # User side, normal function.
-                    with open(os.path.expanduser(vim_m)) as r_vim:
+                    with open(os.path.expanduser(vim_t)) as r_vim:
                         vim_py: Optional[list] = list(r_vim.readlines())
-                        vim_rb: Optional[list] = [s.rstrip() for s in vim_py]
-                        vimr_complete: Optional[list] = vim_rb
-                        vimr_complete.sort(key=itemgetter(0))
-                        return vimr_complete
+                        vim_comp: Optional[list] = [s.rstrip() for s in vim_py]
+                        vim_comp.sort(key=itemgetter(0))
+                        return vim_comp
 
                 # $HOME/dict, Set the dictionary to develop mode.
                 elif os.path.exists(os.path.expanduser(loc_f)):
 
                     # Function change destination.
-                    with open(os.path.expanduser(loc_m)) as rb_mt:
+                    with open(os.path.expanduser(loc_t)) as rb_mt:
                         dev_py: Optional[list] = list(rb_mt.readlines())
-                        dev_plg: Optional[list] = [s.rstrip() for s in dev_py]
-                        dev_complete: Optional[list] = dev_plg
-                        dev_complete.sort(key=itemgetter(0))
-                        return dev_complete
+                        dev_comp: Optional[list] = [s.rstrip() for s in dev_py]
+                        dev_comp.sort(key=itemgetter(0))
+                        return dev_comp
 
                 # Config Folder not found.
                 else:
