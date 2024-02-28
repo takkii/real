@@ -40,24 +40,39 @@ class Source(Base):
             # 3.5 and higher, 4.x or less,python version is required.
             if (py_mj == 3 and py_mi > 4) or (py_mj < 4):
 
-                # Settings, vim-plug path is true/false folder search.
-                plg_f: Optional[str] = '~/.neovim/plugged/real/dict/'
-                plg_m: Optional[str] = '~/.neovim/plugged/real/dict/method.txt'
+                # Settings, vim-plug | neovim path is true/false folder search.
+                neo_f: Optional[str] = '~/.neovim/plugged/real/dict/'
+                neo_m: Optional[str] = '~/.neovim/plugged/real/dict/method.txt'
+
+                # Settings, vim-plug | vim path is true/false folder search.
+                vim_f: Optional[str] = '~/.vim/plugged/real/dict/'
+                vim_m: Optional[str] = '~/.vim/plugged/real/dict/method.txt'
 
                 # Settings, $HOME/dict path is true/false folder search.
                 loc_f: Optional[str] = '~/dict/'
                 loc_m: Optional[str] = '~/dict/method.txt'
 
-                # Use vim-plug, Set the dictionary.
-                if os.path.exists(os.path.expanduser(plg_f)):
+                # Use vim-plug | neovim, Set the dictionary.
+                if os.path.exists(os.path.expanduser(neo_f)):
 
                     # User side, normal function.
-                    with open(os.path.expanduser(plg_m)) as r_meth:
+                    with open(os.path.expanduser(neo_m)) as r_meth:
                         data_py: Optional[list] = list(r_meth.readlines())
                         plug_rb: Optional[list] = [s.rstrip() for s in data_py]
                         r_complete: Optional[list] = plug_rb
                         r_complete.sort(key=itemgetter(0))
                         return r_complete
+
+                # Use vim-plug | vim, Set the dictionary.
+                if os.path.exists(os.path.expanduser(vim_f)):
+
+                    # User side, normal function.
+                    with open(os.path.expanduser(vim_m)) as r_vim:
+                        vim_py: Optional[list] = list(r_vim.readlines())
+                        vim_rb: Optional[list] = [s.rstrip() for s in vim_py]
+                        vimr_complete: Optional[list] = vim_rb
+                        vimr_complete.sort(key=itemgetter(0))
+                        return vimr_complete
 
                 # $HOME/dict, Set the dictionary to develop mode.
                 elif os.path.exists(os.path.expanduser(loc_f)):
