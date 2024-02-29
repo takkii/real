@@ -1,3 +1,8 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![MIT
+License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](
+LICENSE) [![GitHub release](https://img.shields.io/github/release/takkii/real.svg?style=flat)](GitHub) [![GitHub Status](https://img.shields.io/github/last-commit/takkii/real.svg?style=flat)](GitHub) [![Python package](https://github.com/takkii/real/actions/workflows/python.yml/badge.svg)](https://github.com/takkii/real/actions/workflows/python.yml)
+<br />
+
 <div align="center">
   <h2><p>Real is <a href="https://github.com/Shougo/deoplete.nvim">deoplete.nvim</a> plugins.</p></h2>
 </div>
