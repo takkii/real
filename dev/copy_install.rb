@@ -9,6 +9,8 @@ class RubyMethod
     File.open('method.txt', 'a:utf-8', perm = 0o777) do |f|
       f.puts @methods.sort.uniq
     end
+
+    puts 'Writing the method has finished.'
   end
 end
 
