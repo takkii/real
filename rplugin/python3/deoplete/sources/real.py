@@ -84,7 +84,7 @@ class Source(Base):
 
                 # Config Folder not found.
                 else:
-                    raise ValueError("None, Please Check the Config Folder")
+                    raise ValueError("None, Please Check the dict Folder")
 
             # Python_VERSION: 3.5 or higher and 4.x or less.
             else:
