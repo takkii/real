@@ -63,7 +63,7 @@ class Source(Base):
                         return neo_comp
 
                 # Use vim-plug | vim, Set the dictionary.
-                if os.path.exists(os.path.expanduser(vim_f)):
+                elif os.path.exists(os.path.expanduser(vim_f)):
 
                     # User side, normal function.
                     with open(os.path.expanduser(vim_t)) as r_vim:
@@ -79,7 +79,7 @@ class Source(Base):
                     with open(os.path.expanduser(loc_t)) as rb_mt:
                         dev_py: Optional[list] = list(rb_mt.readlines())
                         dev_comp: Optional[list] = [s.rstrip() for s in dev_py]
-                        dev_comp.sort(key=itemgetter(0))
+                        sorted(dev_comp, key=itemgetter(0))
                         return dev_comp
 
                 # Config Folder not found.
