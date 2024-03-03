@@ -1,6 +1,6 @@
 *real*
 
-version: 2024/02/27
+version: 2024/03/03
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -18,8 +18,10 @@ x = real
 *./real*
 
 単語リストを作成します                cd ~/.neovim/plugged/real/dict/
+                                      cd ~/.vim/plugged/real/dict/
                                       ruby ./ruby_method.rb
-ログフォルダ作成                      ruby ./tools/log_folder.rb
+ログフォルダ作成                      ruby ./tools/create.rb
+ログフォルダ削除                      ruby ./tools/delete.rb
 開発環境(辞書生成)                    ruby ./dev/copy_install.rb
 開発環境(辞書移動)                    ruby ./dev/move.rb
 開発環境(辞書削除)                    ruby ./dev/remove.rb
