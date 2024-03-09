@@ -1,6 +1,6 @@
 *real*
 
-version: 2024/03/03
+version: 2024/03/09
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -8,7 +8,15 @@ License: MIT
 *環境構築*
 
 環境構築                              Python3, vim-plug, deoplete.nvim
-導入(vim-plug)                        Plug 'takkii/real'
+
+導入(vim-plug)
+
+初回起動時
+Plug 'takkii/real', { 'do': 'ruby ./install.rb' }
+
+2回目以降
+Plug 'takkii/real'
+
 設定(deoplete.nvim)                   :UpdateRemotePlugins
 依存解消                              pip3 install -r requirements.txt
 Python3.5 ≦  x ＜ Python4.0           Python3.5以上4.0未満を推奨します
@@ -17,7 +25,7 @@ x = real
 ==============================================================================
 *./real*
 
-単語リストを作成します                cd ~/.neovim/plugged/real/dict/
+手動で単語リストを作成                cd ~/.neovim/plugged/real/dict/
                                       cd ~/.vim/plugged/real/dict/
                                       ruby ./ruby_method.rb
 ログフォルダ作成                      ruby ./tools/create.rb
