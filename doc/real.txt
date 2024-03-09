@@ -1,6 +1,6 @@
 *real*
 
-version: 2024/03/03
+version: 2024/03/09
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -8,7 +8,14 @@ License: MIT
 *Environment*
 
 Environment construction                Python3, vim-plug, deoplete.nvim
-Introduction (vim-plug)                 Plug 'takkii/real'
+Introduction (vim-plug)
+
+First and startup
+Plug 'takkii/real', { 'do': 'ruby ./install.rb' }
+
+Second and subsequent startups
+Plug 'takkii/real'
+
 Settings (deoplete.nvim)                :UpdateRemotePlugins
 Dependency removal                      pip3 install -r requirements.txt
 Python3.5 ≦  x ＜ Python4.0             Python3.5 or higher
@@ -17,7 +24,7 @@ x = real                                but less than 4.0 is recommended
 ==============================================================================
 *./real*
 
-create a word list                      cd ~/.neovim/plugged/real/dict/
+Create a word list manually             cd ~/.neovim/plugged/real/dict/
                                         cd ~/.vim/plugged/real/dict/
                                         ruby ./ruby_method.rb
 Create log folder                       ruby ./tools/create.rb
