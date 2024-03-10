@@ -11,7 +11,7 @@ class RubyMethod
   end
 
   def initialize
-    @methods = Class.methods + Object.methods
+    @methods = Class.public_methods + Class.private_methods + Class.protected_methods
   end
 
   def remove
