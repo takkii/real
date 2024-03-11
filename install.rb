@@ -17,8 +17,7 @@ class InstallerRunner
     if File.exist?('./dict/method.txt')
       puts 'Already, Have a method.txt'
     else
-      stdout_rb = Open3.capture3("ruby ./dict/ruby_method.rb")
-      stdout_rb
+      Open3.capture3("ruby ./dict/ruby_method.rb")
       FileUtils.mv(['./method.txt'], "./dict")
       puts 'Installed, The RubyMethod to a Text File.'
     end
