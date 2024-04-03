@@ -1,4 +1,5 @@
 class TestResult:
+
     def __init__(self):
         self.runCount = 0
         self.errorCount = 0
@@ -14,6 +15,7 @@ class TestResult:
 
 
 class TestCase:
+
     def __init__(self, name):
         self.name = name
 
@@ -35,6 +37,7 @@ class TestCase:
 
 
 class TestSuite:
+
     def __init__(self):
         self.tests = []
 
@@ -47,6 +50,7 @@ class TestSuite:
 
 
 class WasRun(TestCase):
+
     def setUp(self):
         self.log = "setUp "
 
@@ -61,6 +65,7 @@ class WasRun(TestCase):
 
 
 class TestCaseTest(TestCase):
+
     def setUp(self):
         self.result = TestResult()
 
