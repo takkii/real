@@ -31,10 +31,27 @@ def main():
             calc = (year + year / 4 - year / 100 + year / 400 +
                     (13 * month + 8) / 5 + day) % 7
 
+        st_week = str(datetime.datetime.now().weekday())
+
+        if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+            st_calc = int(st_week) + 1
+        else:
+            st_calc = int(st_week)
+
         week = ["Sun", "Mon", "Tues", "Wedness", "Thurs", "Fri", "Satur"]
-        cl_wk = week[int(calc)]
+        cl_wk = week[round(calc)]
+
+        st_wk = week[int(st_calc)]
+        week_bl = bool(cl_wk == st_wk)
 
         print(st_year + "/" + st_month + "/" + st_day + " : " + cl_wk + "day")
+
+        if week_bl is True:
+            print("Weekday is correct, OK!")
+        elif week_bl is False:
+            print("Else is False, NO!")
+        else:
+            raise RuntimeError from None
 
     # Custom Exception.
     except ValueError as ext:
