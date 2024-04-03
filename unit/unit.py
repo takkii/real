@@ -5,6 +5,7 @@ from typing import Optional
 
 # Python Version Check.
 class Checker:
+
     def version(self):
         major: Optional[int] = sys.version_info[0]
         minor: Optional[int] = sys.version_info[1]
@@ -13,6 +14,7 @@ class Checker:
 
 # Unit Test.
 class VersionTest(unittest.TestCase):
+
     @classmethod
     def setupClass(cls):
         print("setupClass")
