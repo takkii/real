@@ -38,10 +38,10 @@ def main():
         else:
             st_calc = int(st_week)
 
-        week = ["Sun", "Mon", "Tues", "Wedness", "Thurs", "Fri", "Satur"]
-        cl_wk = week[round(calc)]
+        wk = ["Sun", "Mon", "Tues", "Wedness", "Thurs", "Fri", "Satur", "Sun"]
+        cl_wk = wk[round(calc)]
 
-        st_wk = week[int(st_calc)]
+        st_wk = wk[int(st_calc)]
         week_bl = bool(cl_wk == st_wk)
 
         print(st_year + "/" + st_month + "/" + st_day + " : " + cl_wk + "day")
