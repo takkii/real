@@ -38,6 +38,7 @@ def main():
         else:
             st_calc = int(st_week)
 
+        # 0=Sun, 1=Mon, 2=Tues, 3=Wedness, 4=Thurs, 5=Fri, 6=Saturs, 7=Sun
         wk = ["Sun", "Mon", "Tues", "Wedness", "Thurs", "Fri", "Satur", "Sun"]
         cl_wk = wk[round(calc)]
 
@@ -49,7 +50,7 @@ def main():
         if week_bl is True:
             print("Weekday is correct, OK!")
         elif week_bl is False:
-            print("Else is False, NO!")
+            raise ValueError("Else is False, NO!")
         else:
             raise RuntimeError from None
 
