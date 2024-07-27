@@ -1,6 +1,6 @@
 *real*
 
-version: 2024/03/09
+version: 2024/07/27
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -27,8 +27,7 @@ x = real                                but less than 4.0 is recommended
 Create a word list manually             cd ~/.neovim/plugged/real/dict/
                                         cd ~/.vim/plugged/real/dict/
                                         ruby ./ruby_method.rb
-Create log folder                       ruby ./tools/create.rb
-Delete log folder                       ruby ./tools/delete.rb
+Log folder operations (create/delete)   ruby ./tools/cleaner.rb
 Develop env (dictionary generate)       ruby ./dev/copy_install.rb
 Develop env (dictionary move)           ruby ./dev/move.rb
 Develop env (dictionary delete)         ruby ./dev/remove.rb

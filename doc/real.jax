@@ -1,11 +1,11 @@
 *real*
 
-version: 2024/03/09
+version: 2024/07/27
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
 ==============================================================================
-*環境構築*
+*Environment*
 
 環境構築                              Python3, vim-plug, deoplete.nvim
 
@@ -28,8 +28,7 @@ x = real
 手動で単語リストを作成                cd ~/.neovim/plugged/real/dict/
                                       cd ~/.vim/plugged/real/dict/
                                       ruby ./ruby_method.rb
-ログフォルダ作成                      ruby ./tools/create.rb
-ログフォルダ削除                      ruby ./tools/delete.rb
+ログフォルダ操作(作成、削除)          ruby ./tools/cleaner.rb
 開発環境(辞書生成)                    ruby ./dev/copy_install.rb
 開発環境(辞書移動)                    ruby ./dev/move.rb
 開発環境(辞書削除)                    ruby ./dev/remove.rb
