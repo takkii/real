@@ -41,30 +41,16 @@ class Source(Base):
             # 3.5 and higher, 4.x or less,python version is required.
             if (py_mj == 3 and py_mi > 4) or (py_mj < 4):
 
-                # Settings, vim-plug | neovim path is true/false folder search.
-                neo_f: Optional[str] = '~/.neovim/plugged/real/dict/'
-                neo_t: Optional[str] = '~/.neovim/plugged/real/dict/method.txt'
-
                 # Settings, vim-plug | vim path is true/false folder search.
-                vim_f: Optional[str] = '~/.vim/plugged/real/dict/'
-                vim_t: Optional[str] = '~/.vim/plugged/real/dict/method.txt'
+                vim_f: Optional[str] = '~/.vim/plugged/dict/load/ruby/real/'
+                vim_t: Optional[str] = '~/.vim/plugged/dict/load/ruby/real/method.txt'
 
                 # Settings, $HOME/dict path is true/false folder search.
                 loc_f: Optional[str] = '~/dict/'
                 loc_t: Optional[str] = '~/dict/method.txt'
 
-                # Use vim-plug | neovim, Set the dictionary.
-                if os.path.exists(os.path.expanduser(neo_f)):
-
-                    # User side, normal function.
-                    with open(os.path.expanduser(neo_t)) as r_meth:
-                        neo_py: Optional[list] = list(r_meth.readlines())
-                        neo_comp: Optional[list] = [s.rstrip() for s in neo_py]
-                        neo_comp.sort(key=itemgetter(0))
-                        return neo_comp
-
                 # Use vim-plug | vim, Set the dictionary.
-                elif os.path.exists(os.path.expanduser(vim_f)):
+                if os.path.exists(os.path.expanduser(vim_f)):
 
                     # User side, normal function.
                     with open(os.path.expanduser(vim_t)) as r_vim:
