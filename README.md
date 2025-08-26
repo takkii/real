@@ -12,7 +12,7 @@ LICENSE) [![GitHub release](https://img.shields.io/github/release/takkii/real.sv
 
 <div align="center">
   <h4><p>The Input Completion List Uses a Dictionary.</p></h4>
-  <p>Use dict project, real is totolot clone.</p>
+  <p>Use dict project, totolot clone.</p>
 </div>
 
 <br />
