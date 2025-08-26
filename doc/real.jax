@@ -1,6 +1,6 @@
 *real*
 
-version: 2024/07/27
+version: 2025/08/26
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -11,11 +11,8 @@ License: MIT
 
 導入(vim-plug)
 
-初回起動時
-Plug 'takkii/real', { 'do': 'ruby ./install.rb' }
-
-2回目以降
 Plug 'takkii/real'
+Plug 'takkii/dict'
 
 設定(deoplete.nvim)                   :UpdateRemotePlugins
 依存解消                              pip3 install -r requirements.txt
@@ -23,14 +20,8 @@ Python3.5 ≦  x ＜ Python4.0           Python3.5以上4.0未満を推奨しま
 x = real
 
 ==============================================================================
-*./real*
+*./real/tools/*
 
-手動で単語リストを作成                cd ~/.neovim/plugged/real/dict/
-                                      cd ~/.vim/plugged/real/dict/
-                                      ruby ./ruby_method.rb
-ログフォルダ操作(作成、削除)          ruby ./tools/cleaner.rb
-開発環境(辞書生成)                    ruby ./dev/copy_install.rb
-開発環境(辞書移動)                    ruby ./dev/move.rb
-開発環境(辞書削除)                    ruby ./dev/remove.rb
+ログフォルダ操作(作成、削除)               ruby cleaner.rb
 
 ==============================================================================
